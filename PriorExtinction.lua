@@ -4,6 +4,7 @@ local Library = loadstring(game:HttpGet('https://pastebin.com/raw/1H58g3C5'))()
 local HttpService = game:GetService('HttpService')
 local TS = game:GetService("TweenService")
 local Players = game:GetService('Players')
+local UIS = game:GetService('UserInputService')
 
 local LocalPlayer = game.Players.LocalPlayer
 local GetRootPart = function() return LocalPlayer.Character.Body end
@@ -222,6 +223,15 @@ Toggles = {
 		}
 	}
 }
+
+UIS.InputBegan:Connect(function(Input, isTyping)
+	if isTyping then return end
+
+	if Input.KeyCode == Enum.KeyCode.RightShift then
+		Window:Toggle(false)
+	end
+end)
+
 
 function GetCurrentConfig()
 	local Config = {}
